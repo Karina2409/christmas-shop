@@ -226,3 +226,51 @@ section{
     row-gap: 8px;
 }
 
+
+/* CTA STYLES */
+
+.cta{
+    background:
+            url('../assets/fons/bg-forest.png') no-repeat,
+            url('../assets/fons/bg-snow.png') no-repeat,
+            var(--primary);
+    background-size: cover, cover, cover;
+    background-position: center, center, center;
+    padding: 60px 82px;
+}
+
+.cta__container{
+    padding: 60px 425px;
+}
+
+.cta__inner-container{
+    padding: 60px 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: center;
+}
+
+.cta__timer-container{
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    align-items: center;
+}
+
+.cta__timer{
+    display: flex;
+    border-radius: 20px;
+    padding: 8px 12px 12px 12px;
+    background: var(--static-white-40);
+    align-items: center;
+}
+
+.cta__timer__time{
+    width: 80px;
+    height: 52px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
