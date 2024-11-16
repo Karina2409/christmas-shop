@@ -15,17 +15,30 @@
     --overlay: rgba(24, 28, 41, 0.8);
 }
 
-*{
+@font-face {
+    font-family: 'Allura';
+    src: url('../fonts/allura-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
     margin: 0;
     box-sizing: border-box;
     font-family: var(--font-family), serif;
 }
 
-
-.header {
+.header__wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 12px 0;
+}
+
+.header {
+    padding: 0 82px;
+    width: 1440px;
+    margin: 0 auto;
 }
 
 .header__logo-container {
@@ -72,10 +85,11 @@
 .header__list__item:hover {
     cursor: pointer;
     background-color: var(--primary-10);
-    .header__link{
-        color: var(--primary);
 
+    .header__link {
+        color: var(--primary);
     }
+
     transition: color, background-color 0.3s ease;
 }
 
