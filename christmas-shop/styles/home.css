@@ -5,13 +5,14 @@
 
 .hero{
     background:
-            url('../assets/fons/bg-ball.png') no-repeat,   /* Верхний слой: первая картинка */
-            url('../assets/fons/bg-snow.png') no-repeat, /* Средний слой: вторая картинка */
+            url('../assets/fons/bg-ball.png') no-repeat,
+            url('../assets/fons/bg-snow.png') no-repeat,
             var(--primary);
     background-size: cover, cover, cover;
     background-position: center, center, center;
     border-radius: 20px 20px 0 0;
     padding: 60px 505px;
+    height: 524px;
 }
 
 .hero__container {
@@ -22,37 +23,73 @@
     row-gap: 12px;
 }
 
-.hero__caption{
-    font-family: var(--second-family), serif;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 100%;
-    letter-spacing: 0.05em;
-    text-align: center;
-    color: var(--static-white);
-}
-
-.hero__heading {
-    font-weight: 600;
-    font-size: 32px;
-    line-height: 150%;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    text-align: center;
-    color: var(--static-white);
-}
-
 .hero__button{
     background: var(--dark);
     border-radius: 20px;
     padding: 20px 32px;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 130%;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
     text-align: center;
-    color: var(--static-white);
     width: fit-content;
+    border: none;
 }
 
+
+/* ABOUT STYLES */
+
+
+.about{
+    background:
+            url('../assets/fons/bg-snow.png') no-repeat,
+            var(--primary);
+    background-size: cover, cover;
+    background-position: center, center;
+    padding: 60px 82px;
+    height: 648px;
+    margin-top: -1px;
+}
+
+.about__container{
+    background: var(--static-white);
+    display: flex;
+    height: 528px;
+    border-radius: 20px;
+    border: none;
+    justify-content: space-between;
+}
+
+.about__left-section{
+    padding: 0 60px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about__left-section__container{
+    padding: 60px 0;
+    max-width: 426px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.about__caption{
+    color: var(--primary);
+}
+
+.about__heading{
+    color: var(--dark);
+}
+
+.about__paragraph{
+    color: var(--dark);
+}
+
+.about__image-section{
+    border-radius: 0 0 20px 20px;
+    border: none;
+}
+
+.about__santa-image{
+    border-radius: 20px;
+    border: none;
+}
