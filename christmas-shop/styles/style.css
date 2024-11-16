@@ -100,6 +100,21 @@
     color: var(--static-white);
 }
 
+.gift-for-harmony{
+    color: var(--tag-pink);
+}
+
+.gift-for-work{
+    color: var(--tag-purple);
+}
+
+.gift-for-health{
+    color: var(--tag-green);
+}
+
+.color-black{
+    color: black;
+}
 
 
 
