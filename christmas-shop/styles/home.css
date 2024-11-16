@@ -1,18 +1,17 @@
-section{
+section {
     outline: none;
 }
 
-.main{
+.main {
     width: 1440px;
     margin: 0 auto;
     overflow: hidden;
 }
 
-.hero{
-    background:
-            url('../assets/fons/bg-ball.png') no-repeat,
-            url('../assets/fons/bg-snow.png') no-repeat,
-            var(--primary);
+.hero {
+    background: url('../assets/fons/bg-ball.png') no-repeat,
+    url('../assets/fons/bg-snow.png') no-repeat,
+    var(--primary);
     background-size: cover, cover, cover;
     background-position: center, center, center;
     border-radius: 20px 20px 0 0;
@@ -28,7 +27,7 @@ section{
     row-gap: 12px;
 }
 
-.hero__button{
+.hero__button {
     background: var(--dark);
     border-radius: 20px;
     padding: 20px 32px;
@@ -41,17 +40,16 @@ section{
 /* ABOUT STYLES */
 
 
-.about{
-    background:
-            url('../assets/fons/bg-snow.png') no-repeat,
-            var(--primary);
+.about {
+    background: url('../assets/fons/bg-snow.png') no-repeat,
+    var(--primary);
     background-size: cover, cover;
     background-position: center, center;
     padding: 60px 82px;
     height: 648px;
 }
 
-.about__container{
+.about__container {
     background: var(--static-white);
     display: flex;
     height: 528px;
@@ -60,14 +58,14 @@ section{
     justify-content: space-between;
 }
 
-.about__left-section{
+.about__left-section {
     padding: 0 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.about__left-section__container{
+.about__left-section__container {
     padding: 60px 0;
     max-width: 426px;
     display: flex;
@@ -75,24 +73,24 @@ section{
     row-gap: 20px;
 }
 
-.about__caption{
+.about__caption {
     color: var(--primary);
 }
 
-.about__heading{
+.about__heading {
     color: var(--dark);
 }
 
-.about__paragraph{
+.about__paragraph {
     color: var(--dark);
 }
 
-.about__image-section{
+.about__image-section {
     border-radius: 0 0 20px 20px;
     border: none;
 }
 
-.about__santa-image{
+.about__santa-image {
     border-radius: 20px;
     border: none;
 }
@@ -100,30 +98,29 @@ section{
 
 /* SLIDER STYLES */
 
-.slider{
-    background:
-            url('../assets/fons/bg-snow.png') no-repeat,
-            var(--primary);
+.slider {
+    background: url('../assets/fons/bg-snow.png') no-repeat,
+    var(--primary);
     background-size: cover, cover;
     background-position: center, center;
     padding: 60px 82px;
 }
 
-.slider__container{
+.slider__container {
     display: flex;
     flex-direction: column;
     align-items: center;
     row-gap: 20px;
 }
 
-.heading__container{
+.heading__container {
     display: flex;
     flex-direction: column;
     row-gap: 12px;
     align-items: center;
 }
 
-.slider-text{
+.slider-text {
     font-weight: 600;
     font-size: 80px;
     text-transform: uppercase;
@@ -135,32 +132,32 @@ section{
     width: 1276px;
 }
 
-.slider__container__img-slider{
+.slider__container__img-slider {
     display: flex;
     column-gap: 20px;
     align-items: center;
 }
 
-.slider__image-container{
+.slider__image-container {
     border-radius: 20px;
     width: 200px;
     height: 200px;
     overflow: hidden;
 }
 
-.slider__image{
+.slider__image {
     width: 100%;
     height: 100%;
 }
 
-.slider__controllers__container{
+.slider__controllers__container {
     width: 100%;
     display: flex;
     justify-content: right;
     column-gap: 20px;
 }
 
-.slider__controller{
+.slider__controller {
     border: 1px solid var(--static-white-40);
     border-radius: 20px;
     width: 56px;
@@ -169,31 +166,50 @@ section{
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
-.slider__controller.active{
+.slider__controller.active {
     border: 1px solid var(--static-white);
+    transition: color, background-color 0.3s ease;
+}
+
+.arrow path {
+    stroke: var(--static-white-40);
+}
+
+.arrow.active path {
+    stroke: var(--static-white);
+}
+
+.slider__controller.active:hover{
+    background: var(--static-white);
+    cursor: pointer;
+    transition: color, background-color 0.3s ease;
+
+    .arrow.active path {
+        stroke: var(--primary);
+    }
 }
 
 
 /* BEST GIFTS STYLES */
 
-.best-gifts{
-    background:
-            url('../assets/fons/bg-snow.png') no-repeat,
-            var(--primary);
+.best-gifts {
+    background: url('../assets/fons/bg-snow.png') no-repeat,
+    var(--primary);
     background-size: cover, cover;
     background-position: center, center;
     padding: 60px 82px;
 }
 
-.best-gifts__container{
+.best-gifts__container {
     display: flex;
     flex-direction: column;
     row-gap: 20px;
 }
 
-.best-gifts__container__gifts{
+.best-gifts__container__gifts {
     display: flex;
     column-gap: 12px;
     flex-wrap: wrap;
@@ -209,14 +225,14 @@ section{
     flex-direction: column;
 }
 
-.gift-card__image{
+.gift-card__image {
     width: 310px;
     height: 230px;
     background-size: cover, cover;
     background-position: center, center;
 }
 
-.best-gifts__heading__container{
+.best-gifts__heading__container {
     border-radius: 20px;
     background: var(--static-white);
     height: 112px;
@@ -229,22 +245,21 @@ section{
 
 /* CTA STYLES */
 
-.cta{
-    background:
-            url('../assets/fons/bg-forest.png') no-repeat,
-            url('../assets/fons/bg-snow.png') no-repeat,
-            var(--primary);
+.cta {
+    background: url('../assets/fons/bg-forest.png') no-repeat,
+    url('../assets/fons/bg-snow.png') no-repeat,
+    var(--primary);
     background-size: cover, cover, cover;
     background-position: center, center, center;
     padding: 60px 82px;
     border-radius: 0 0 20px 20px;
 }
 
-.cta__container{
+.cta__container {
     padding: 60px 425px;
 }
 
-.cta__inner-container{
+.cta__inner-container {
     padding: 60px 0;
     display: flex;
     flex-direction: column;
@@ -252,14 +267,14 @@ section{
     align-items: center;
 }
 
-.cta__timer-container{
+.cta__timer-container {
     display: flex;
     flex-direction: column;
     row-gap: 8px;
     align-items: center;
 }
 
-.cta__timer{
+.cta__timer {
     display: flex;
     border-radius: 20px;
     padding: 8px 12px 12px 12px;
@@ -267,7 +282,7 @@ section{
     align-items: center;
 }
 
-.cta__timer__time{
+.cta__timer__time {
     width: 80px;
     height: 52px;
     display: flex;
