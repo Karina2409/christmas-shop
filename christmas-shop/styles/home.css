@@ -34,6 +34,17 @@ section {
     text-align: center;
     width: fit-content;
     border: none;
+    transition: color, background-color 0.3s ease;
+}
+
+.hero__button:hover{
+    background: var(--static-white);
+    color: var(--dark);
+    transition: color, background-color 0.3s ease;
+    cursor: pointer;
+    .action-small{
+        transition: color 0.3s ease;
+    }
 }
 
 
@@ -182,7 +193,7 @@ section {
     stroke: var(--static-white);
 }
 
-.slider__controller.active:hover{
+.slider__controller.active:hover {
     background: var(--static-white);
     cursor: pointer;
     transition: color, background-color 0.3s ease;
@@ -207,39 +218,6 @@ section {
     display: flex;
     flex-direction: column;
     row-gap: 20px;
-}
-
-.best-gifts__container__gifts {
-    display: flex;
-    column-gap: 12px;
-    flex-wrap: wrap;
-}
-
-.gift-card {
-    border-radius: 20px;
-    width: 310px;
-    height: 342px;
-    overflow: hidden;
-    background: var(--content-background);
-    display: flex;
-    flex-direction: column;
-}
-
-.gift-card__image {
-    width: 310px;
-    height: 230px;
-    background-size: cover, cover;
-    background-position: center, center;
-}
-
-.best-gifts__heading__container {
-    border-radius: 20px;
-    background: var(--static-white);
-    height: 112px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    row-gap: 8px;
 }
 
 

@@ -1,0 +1,53 @@
+.main{
+    padding: 60px 82px;
+    background: var(--primary);
+    width: 1440px;
+    margin: 0 auto;
+    border-radius: 20px;
+    position: relative;
+
+}
+
+.main__container{
+    display: flex;
+    row-gap: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.garland img{
+    background-size: contain;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.main__heading{
+    max-width: 426px;
+}
+
+.main__tabs{
+    display: flex;
+    column-gap: 8px;
+}
+
+.main__tabs__tab{
+    padding: 12px 20px;
+    border-radius: 12px;
+    transition: color, background-color 0.3s ease;
+}
+
+.main__tabs__tab:hover{
+    cursor: pointer;
+    background: var(--static-white-20);
+    transition: color, background-color 0.3s ease;
+}
+
+.main__tabs__tab.active{
+    background: var(--static-white-20);
+}
+
+.main__tabs__tab.active:hover {
+    cursor: default;
+}

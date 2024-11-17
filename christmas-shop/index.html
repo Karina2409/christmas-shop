@@ -5,30 +5,31 @@
     <title>Home</title>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/home.css">
+    <link type="Image/x-icon" href="./assets/icons/snowflake.png" rel="icon">
 </head>
 <body>
 
 
 <header class="header">
     <div class="header__wrapper">
-        <div class="header__logo-container">
+        <div class="header__logo-container" onclick="window.location.href='index.html'">
             <img src="/assets/icons/snowflake.png" alt="Logo" class="header__logo-img">
             the gifts
         </div>
 
         <nav class="header__nav">
             <ul class="header__list">
-                <li class="header__list__item">
-                    <a href="" class="header__link">gifts</a>
+                <li class="header__list__item" onclick="window.location.href='gifts.html'">
+                    <a href="gifts.html" class="header__link">gifts</a>
                 </li>
                 <li class="header__list__item">
-                    <a href="" class="header__link">about</a>
+                    <a href="#about" class="header__link">about</a>
                 </li>
                 <li class="header__list__item">
-                    <a href="" class="header__link">best</a>
+                    <a href="#best" class="header__link">best</a>
                 </li>
                 <li class="header__list__item">
-                    <a href="" class="header__link">contacts</a>
+                    <a href="#contacts" class="header__link">contacts</a>
                 </li>
             </ul>
         </nav>
@@ -40,7 +41,7 @@
         <div class="hero__container">
             <p class="caption">Merry Christmas</p>
             <h1 class="heading1">Gift yourself the magic of new possibilities</h1>
-            <button class="hero__button action-small">
+            <button class="hero__button action-small" onclick="window.location.href='gifts.html'">
                 Explore Magical Gifts
             </button>
             <p class="caption">and Happy New Year</p>
@@ -66,7 +67,7 @@
         </div>
     </section>
 
-    <section class="slider">
+    <section class="slider" id="slider">
         <div class="slider__container">
             <div class="heading__container">
                 <p class="caption">Become Happier!</p>
@@ -113,17 +114,16 @@
         </div>
     </section>
 
-    <section class="best-gifts">
+    <section class="best-gifts" id="best">
         <div class="best-gifts__container">
             <div class="heading__container">
                 <p class="caption">Best Gifts</p>
                 <h2 class="heading2">especially for you</h2>
             </div>
-            <div class="best-gifts__container__gifts">
+            <div class="gifts-list">
                 <div class="gift-card">
-                    <!--                    <div class="gift-card__image"></div>-->
                     <img src="/assets/gift-for-work.png" alt="Gift For Work" class="gift-card__image">
-                    <div class="best-gifts__heading__container">
+                    <div class="gift-card__heading__container">
                         <h4 class="heading4 gift-for-work">For work</h4>
                         <h3 class="heading3 color-black">Console.log Guru</h3>
                     </div>
@@ -131,7 +131,7 @@
 
                 <div class="gift-card">
                     <img src="/assets/gift-for-health.png" alt="Gift For Health" class="gift-card__image">
-                    <div class="best-gifts__heading__container">
+                    <div class="gift-card__heading__container">
                         <h4 class="heading4 gift-for-health">For health</h4>
                         <h3 class="heading3 color-black">Hydration Bot</h3>
                     </div>
@@ -139,7 +139,7 @@
 
                 <div class="gift-card">
                     <img src="/assets/gift-for-work.png" alt="Gift For Work" class="gift-card__image">
-                    <div class="best-gifts__heading__container">
+                    <div class="gift-card__heading__container">
                         <h4 class="heading4 gift-for-work">For work</h4>
                         <h3 class="heading3 color-black">Merge Master</h3>
                     </div>
@@ -147,7 +147,7 @@
 
                 <div class="gift-card">
                     <img src="/assets/gift-for-harmony.png" alt="Gift For Harmony" class="gift-card__image">
-                    <div class="best-gifts__heading__container">
+                    <div class="gift-card__heading__container">
                         <h4 class="heading4 gift-for-harmony">For harmony</h4>
                         <h3 class="heading3 color-black">Spontaneous Coding Philosopher</h3>
                     </div>
@@ -156,11 +156,11 @@
         </div>
     </section>
 
-    <section class="cta">
+    <section class="cta" id="cta">
         <div class="cta__container">
             <div class="cta__inner-container">
                 <h2 class="heading2 text-align-center">Ready to start your journey to a better version of yourself?</h2>
-                <button class="hero__button action-small">
+                <button class="hero__button action-small" onclick="window.location.href='gifts.html'">
                     Explore Magical Gifts
                 </button>
                 <div class="cta__timer-container">
@@ -199,25 +199,25 @@
 
 </main>
 
-<footer class="footer">
+<footer class="footer" id="contacts">
     <div class="footer__block-list">
-        <div class="footer__card">
+        <a href="tel:+375 (29) 111-22-33" class="footer__card">
             <img src="./assets/icons/santa-claus.png" alt="Santa Claus" class="footer__block__image">
             <p class="action-large color-black">+375 (29) 111-22-33</p>
             <h3 class="heading3 color-black">Call Us</h3>
-        </div>
+        </a>
 
-        <div class="footer__card">
+        <a href="https://maps.app.goo.gl/A2bZ7HoZvP4jx3Dc6" target="_blank" class="footer__card">
             <img src="./assets/icons/christmas-tree.png" alt="Christmas tree" class="footer__block__image">
             <p class="action-large color-black">Magic forest</p>
             <h3 class="heading3 color-black">meet us</h3>
-        </div>
+        </a>
 
-        <div class="footer__card">
+        <a href="mailto:gifts@magic.com" class="footer__card">
             <img src="./assets/icons/snake.png" alt="Snake" class="footer__block__image">
             <p class="action-large color-black">gifts@magic.com</p>
             <h3 class="heading3 color-black">write us</h3>
-        </div>
+        </a>
 
     </div>
 
@@ -260,9 +260,11 @@
 
         <p class="paragraph color-black">© Copyright 2025, All Rights Reserved</p>
 
-        <p class="caption color-black footer__caption">Made in Rolling Scopes School</p>
+        <a href="https://rs.school/" class="caption color-black footer__caption" target="_blank">Made in Rolling Scopes School</a>
     </div>
 </footer>
+
+<script src="index.js"></script>
 
 </body>
 </html>
