@@ -205,6 +205,15 @@
     transition: color, background-color 0.3s ease;
 }
 
+.header__list__item.open_page{
+    background-color: var(--primary-10);
+    cursor: default;
+    .header__link {
+        color: var(--primary);
+        transition: color, color 0.3s ease;
+    }
+}
+
 .header__link {
     color: var(--dark);
     text-decoration: none;
