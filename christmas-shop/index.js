@@ -7,6 +7,16 @@ document.querySelectorAll('.header__list__item').forEach(item => {
     });
 });
 
+document.addEventListener('DOMContentLoaded', event => {
+    const burgerMenu = document.getElementById('burgerMenu');
+    const menu = document.getElementById('menu');
+
+    burgerMenu.addEventListener('click', () => {
+        burgerMenu.classList.toggle('open');
+        menu.classList.toggle('show');
+    });
+})
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log("\nDone: \n\n" +
         "1. Checking validation of pages: +18\n" +

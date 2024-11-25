@@ -3,7 +3,7 @@ section {
 }
 
 .main {
-    width: 1440px;
+    max-width: 1440px;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -15,11 +15,16 @@ section {
     background-size: cover, cover, cover;
     background-position: center, center, center;
     border-radius: 20px 20px 0 0;
-    padding: 60px 505px;
+    padding: 60px 8px;
+    width: 100%;
     height: 524px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero__container {
+    max-width: 430px;
     padding: 60px 0;
     display: flex;
     flex-direction: column;
@@ -56,8 +61,10 @@ section {
     var(--primary);
     background-size: cover, cover;
     background-position: center, center;
-    padding: 60px 82px;
-    height: 648px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 8px;
 }
 
 .about__container {
@@ -65,6 +72,9 @@ section {
     display: flex;
     height: 528px;
     border-radius: 20px;
+    max-width: 1276px;
+    width: 1276px;
+    min-width: 6git00px;
     border: none;
     justify-content: space-between;
 }
@@ -72,6 +82,7 @@ section {
 .about__left-section {
     padding: 0 60px;
     display: flex;
+    width: 50%;
     flex-direction: column;
     justify-content: center;
 }
@@ -79,6 +90,7 @@ section {
 .about__left-section__container {
     padding: 60px 0;
     max-width: 426px;
+    min-width: 200px;
     display: flex;
     flex-direction: column;
     row-gap: 20px;
@@ -90,6 +102,7 @@ section {
 
 .about__heading {
     color: var(--dark);
+    text-wrap: wrap;
 }
 
 .about__paragraph {
@@ -97,13 +110,23 @@ section {
 }
 
 .about__image-section {
-    border-radius: 0 0 20px 20px;
+    border-radius: 20px;
+    width: 50%;
+    height: 100%;
     border: none;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .about__santa-image {
-    border-radius: 20px;
     border: none;
+    object-fit: contain; /* Позволяет изображению сохранять пропорции */
+    object-position: center;
+    width: auto;
+    height: 100%; /* Высота заполняет контейнер */
+    max-height: 100%; /* Гарантирует, что высота не превысит высоту контейнера */
 }
 
 
@@ -120,7 +143,6 @@ section {
 .slider__container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     row-gap: 20px;
 }
 
@@ -177,7 +199,6 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 .slider__controller.active {
@@ -211,7 +232,10 @@ section {
     var(--primary);
     background-size: cover, cover;
     background-position: center, center;
-    padding: 60px 82px;
+    padding: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .best-gifts__container {
@@ -231,10 +255,14 @@ section {
     background-position: center, center, center;
     padding: 60px 82px;
     border-radius: 0 0 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .cta__container {
-    padding: 60px 425px;
+    padding: 60px 0;
+    width: 426px;
 }
 
 .cta__inner-container {
@@ -268,3 +296,15 @@ section {
     align-items: center;
 }
 
+
+
+@media screen and (max-width: 1190px) {
+    .cta{
+        padding: 60px 8px;
+    }
+
+    .slider {
+
+        padding: 60px 8px;
+    }
+}
