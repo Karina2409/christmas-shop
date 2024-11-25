@@ -284,7 +284,7 @@
 .footer__block-list{
     display: flex;
     column-gap: 12px;
-    row-gap: 10px;
+    row-gap: 12px;
 
     align-items: center;
 }
@@ -417,5 +417,38 @@
 
     .burger-menu{
         display: flex;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .header__logo-container:hover {
+        cursor: default;
+    }
+
+    .gift-card:hover{
+        cursor: default;
+        .heading3{
+            color: black;
+        }
+    }
+
+    .footer__caption:hover{
+        cursor: default;
+        color: black;
+    }
+
+    .footer__card:hover{
+        cursor: default;
+        .action-large{
+            color: black;
+        }
+        .heading3{
+            color: black;
+        }
+
+    }
+
+    .icon:hover path {
+        stroke: #181C29;
     }
 }

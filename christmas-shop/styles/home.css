@@ -73,6 +73,7 @@ section {
     display: flex;
     border-radius: 20px;
     max-width: 1276px;
+    height: 528px;
     width: 1276px;
     min-width: 0;
     border: none;
@@ -325,6 +326,25 @@ section {
     .about__left-section{
         padding: 0 20px;
     }
+}
 
+@media (hover: none) and (pointer: coarse) {
+    .hero__button:hover{
+        background: var(--dark);
+        color: white;
+        cursor: default;
 
+        .action-small {
+            transition: none;
+        }
+    }
+
+    .slider__controller.active:hover {
+        background: inherit;
+        cursor: default;
+
+        .arrow.active path {
+            stroke: var(--static-white);
+        }
+    }
 }
