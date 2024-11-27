@@ -451,4 +451,17 @@
     .icon:hover path {
         stroke: #181C29;
     }
+
+    .burger-menu{
+        cursor: default;
+    }
+
+    .header__list__item.active:hover {
+        cursor: default;
+        background-color: inherit;
+
+        .header__link {
+            color: black;
+        }
+    }
 }
