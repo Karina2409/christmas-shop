@@ -78,10 +78,13 @@ function Timer() {
     const minutes = Math.floor((gap / 1000 / 60) % 60);
     const seconds = Math.floor((gap / 1000) % 60);
 
-    daysCount.innerText = days;
-    hoursCount.innerText = hours;
-    minutesCount.innerText = minutes;
-    secondsCount.innerText = seconds;
+    if(daysCount){
+        daysCount.innerText = days;
+        hoursCount.innerText = hours;
+        minutesCount.innerText = minutes;
+        secondsCount.innerText = seconds;
+    }
+
 } setInterval(Timer, 1000);
 
 //slider
@@ -102,7 +105,7 @@ function refreshSliderStep(){
         sliderStep = 6;
     }
 
-    if(pageWidth >= 1440)
+    if(pageWidth >= 1440){}
 }
 
 arrowRight.addEventListener('click', () => {
