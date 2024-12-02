@@ -1,4 +1,5 @@
 let gifts = [];
+let randomGifts = [];
 
 document.querySelectorAll('.header__list__item').forEach(item => {
     item.addEventListener('click', function () {
@@ -182,11 +183,13 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(data => {
             gifts = data;
+            randomGifts = generateRandomGifts(gifts);
             if(giftsListHome){
                 updateBestGifts();
             }
             if(giftsListGifts){
-                renderGiftsList();
+                console.log(randomGifts)
+                updateGiftsList(randomGifts);
             }
 
         })
@@ -273,19 +276,62 @@ function updateButtonToTopVisible(){
 
 //GIFT CARDS ON THE GIFT PAGE
 
-function renderGiftsList(){
-    const randomGifts = [];
-    while (randomGifts.length < gifts.length) {
-        const randomIndex = Math.floor(Math.random() * gifts.length);
-        const gift = gifts[randomIndex];
+const forWorkTab = document.getElementById('tab-for-work');
+const forHarmonyTab = document.getElementById('tab-for-harmony');
+const forHealthTab = document.getElementById('tab-for-health');
+const tabAll = document.getElementById('tab-all');
 
-        if (!randomGifts.includes(gift)) {
-            randomGifts.push(gift);
-        }
-    }
+const tabs = document.querySelectorAll('.main__tabs__tab');
+
+function updateGiftsList(randomGifts){
     giftsListGifts.innerHTML = '';
     randomGifts.forEach((gift) => {
         const card = createCard(gift);
         giftsListGifts.append(card);
     })
+}
+
+function generateRandomGifts(giftsCollection){
+    const randomGifts = [];
+    while (randomGifts.length < giftsCollection.length) {
+        const randomIndex = Math.floor(Math.random() * giftsCollection.length);
+        const gift = giftsCollection[randomIndex];
+
+        if (!randomGifts.includes(gift)) {
+            randomGifts.push(gift);
+        }
+    }
+    return randomGifts;
+}
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const category = startWithBigLetter(tab.innerText);
+        let giftsByCategory = []
+        if(category !== 'All'){
+            giftsByCategory = getGiftsByCategory(category);
+        }
+        else{
+            giftsByCategory = randomGifts;
+        }
+        updateGiftsList(giftsByCategory);
+    });
+});
+
+function getGiftsByCategory(category){
+    const giftsOfCategory = [];
+    randomGifts.forEach(gift => {
+        if(gift.category === category){
+            giftsOfCategory.push(gift);
+        }
+    })
+    return giftsOfCategory;
+}
+
+function startWithBigLetter(str){
+    if(!str) return str;
+    return str
+        .split(' ')
+        .map(word => word[0].toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ');
 }
