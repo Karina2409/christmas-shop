@@ -84,6 +84,32 @@ function Timer() {
     secondsCount.innerText = seconds;
 } setInterval(Timer, 1000);
 
+//slider
+
+const sliderContainer = document.getElementById('slider-container');
+const arrowLeft = document.querySelector('.slider__arrow-left');
+const arrowRight = document.querySelector('.slider__arrow-right');
+
+let clickCount = 3;
+let sliderStep = 0;
+let marginLeft = 0;
+
+function refreshSliderStep(){
+    const pageWidth = document.documentElement.scrollWidth;
+    if(pageWidth >= 769){
+        sliderStep = 3;
+    } else if(pageWidth < 769){
+        sliderStep = 6;
+    }
+
+    if(pageWidth >= 1440)
+}
+
+arrowRight.addEventListener('click', () => {
+   sliderContainer.style.transform = 'translateX(10px)';
+});
+
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log(`Done (100/100):
 1. Макет страниц выравнивает дизайн по ширине экрана 1440px: +16
