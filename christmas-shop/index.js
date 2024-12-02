@@ -306,6 +306,8 @@ function generateRandomGifts(giftsCollection){
 
 tabs.forEach(tab => {
     tab.addEventListener('click', () => {
+        tabs.forEach(el => el.classList.remove('active'));
+        tab.classList.add('active');
         const category = startWithBigLetter(tab.innerText);
         let giftsByCategory = []
         if(category !== 'All'){
