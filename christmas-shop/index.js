@@ -1,3 +1,5 @@
+let gifts = [];
+
 document.querySelectorAll('.header__list__item').forEach(item => {
     item.addEventListener('click', function () {
         const link = this.querySelector('a');
@@ -7,14 +9,7 @@ document.querySelectorAll('.header__list__item').forEach(item => {
     });
 });
 
-document.addEventListener('DOMContentLoaded', event => {
-    let div = document.createElement('div');
-    div.style.overflowY = 'scroll';
-    div.style.width = '50px';
-    div.style.height = '50px';
-    document.body.append(div);
-    let scrollWidth = div.offsetWidth - div.clientWidth;
-    div.remove();
+document.addEventListener('DOMContentLoaded', () => {
 
     const burgerItem = document.getElementById('burgerMenu');
     const menu = document.getElementById('menu');
@@ -40,7 +35,7 @@ document.addEventListener('DOMContentLoaded', event => {
     burgerItem.addEventListener('click', () => {
         burgerItem.classList.toggle('open');
         menu.classList.toggle('show');
-        if(menuOpen === 1) {
+        if (menuOpen === 1) {
             document.body.style.overflow = 'visible';
             menu.classList.add('closing');
             menu.classList.remove('open');
@@ -50,8 +45,7 @@ document.addEventListener('DOMContentLoaded', event => {
                 menu.style.visibility = 'hidden';
             }, 500);
             menuOpen = 0;
-        }
-        else{
+        } else {
             document.body.style.overflow = 'hidden';
             menu.style.visibility = 'visible';
             menu.classList.remove('closing');
@@ -78,14 +72,16 @@ function Timer() {
     const minutes = Math.floor((gap / 1000 / 60) % 60);
     const seconds = Math.floor((gap / 1000) % 60);
 
-    if(daysCount){
+    if (daysCount) {
         daysCount.innerText = days;
         hoursCount.innerText = hours;
         minutesCount.innerText = minutes;
         secondsCount.innerText = seconds;
     }
 
-} setInterval(Timer, 1000);
+}
+
+setInterval(Timer, 1000);
 
 //slider
 
@@ -99,15 +95,15 @@ let sliderStep = 0;
 let marginLeft = 0;
 let sliderPosition = 0;
 
-function updateSliderStep(){
+function updateSliderStep() {
     const pageWidth = document.documentElement.scrollWidth;
-    if(pageWidth >= 769){
+    if (pageWidth >= 769) {
         clickCount = 3;
     } else {
         clickCount = 6;
     }
 
-    if(pageWidth >= 1190){
+    if (pageWidth >= 1190) {
         marginLeft = 82;
     } else {
         marginLeft = 8;
@@ -121,12 +117,12 @@ function updateSliderStep(){
     updateButtons();
 }
 
-function initSlider(){
+function initSlider() {
     updateSliderStep();
     window.addEventListener('resize', updateSliderStep);
 }
 
-function nextSliderStep(){
+function nextSliderStep() {
 
     if (sliderPosition >= (sliderStep * clickCount)) return;
 
@@ -135,26 +131,24 @@ function nextSliderStep(){
     updateButtons();
 }
 
-function prevSliderStep(){
+function prevSliderStep() {
 
-    if(sliderPosition <= 1) return;
+    if (sliderPosition <= 1) return;
     sliderPosition -= sliderStep;
     sliderContainer.style.left = -sliderPosition + 'px';
     updateButtons();
 }
 
-function updateButtons(){
-    if(sliderPosition <= 1){
+function updateButtons() {
+    if (sliderPosition <= 1) {
         arrowLeft.classList.remove('active');
-    }
-    else{
+    } else {
         arrowLeft.classList.add('active');
     }
 
-    if(sliderPosition >= (sliderStep * clickCount)){
+    if (sliderPosition >= (sliderStep * clickCount)) {
         arrowRight.classList.remove('active');
-    }
-    else {
+    } else {
         arrowRight.classList.add('active');
     }
 }
@@ -163,3 +157,82 @@ initSlider();
 
 arrowRight.addEventListener('click', nextSliderStep);
 arrowLeft.addEventListener('click', prevSliderStep);
+
+
+//BEST GIFTS
+
+const giftsList = document.querySelector('.gifts-list');
+
+document.addEventListener("DOMContentLoaded", function () {
+    fetch('./gifts.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            gifts = data;
+            updateBestGifts();
+        })
+        .catch(error => {
+            console.error('Ошибка загрузки файла:', error);
+        });
+});
+
+function generateRandomFourCards() {
+    let randomCards = [];
+    while (randomCards.length < 4) {
+        const randomIndex = Math.floor(Math.random() * gifts.length);
+        const gift = gifts[randomIndex];
+
+        if (!randomCards.includes(gift)) {
+            randomCards.push(gift);
+        }
+    }
+
+    return randomCards;
+}
+
+function updateBestGifts() {
+    const cards = generateRandomFourCards();
+    giftsList.innerHTML = '';
+
+    cards.forEach(gift => {
+        const card = createCard(gift);
+        giftsList.append(card);
+    })
+}
+
+function createCard(gift) {
+    const card = document.createElement('div');
+    card.classList.add('gift-card');
+    const giftCategory = gift.category;
+    let giftDushCategory = '';
+    if(giftCategory === 'For Harmony') {
+        giftDushCategory = 'gift-for-harmony';
+    } else if(giftCategory === 'For Work') {
+        giftDushCategory = 'gift-for-work';
+    } else if(giftCategory === 'For Health') {
+        giftDushCategory = 'gift-for-health';
+    }
+
+    card.innerHTML = `
+        <img src="./assets/${giftDushCategory}.png" alt='Gift ${giftCategory}' class="gift-card__image">
+        <div class="gift-card__heading__container">
+            <h4 class="heading4 ${giftDushCategory}">${giftCategory}</h4>
+            <h3 class="heading3 color-black">${gift.name}</h3>
+        </div>
+    `
+
+    card.addEventListener('click', () => {
+        openPopup(gift);
+    })
+
+    return card;
+}
+
+
+//BACK TO TOP BUTTON
+
+function

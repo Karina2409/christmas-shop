@@ -54,6 +54,28 @@
     cursor: default;
 }
 
+.back-to-top-button{
+    border: 1px solid #ff4646;
+    border-radius: 100px;
+    width: 56px;
+    height: 56px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 8px;
+    right: 8px;
+}
+
+.back-to-top-button.invisible{
+    visibility: hidden;
+}
+
+.back-to-top-button.visible{
+    visibility: visible;
+}
+
 @media screen and (max-width: 1190px) {
     .main{
         padding: 60px 8px;
