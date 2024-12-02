@@ -17,8 +17,9 @@
 
 .garland img{
     background-size: contain;
-    height: 200px;
+    max-height: 200px;
     position: absolute;
+    width: 100%;
     top: 0;
     left: 0;
 }
@@ -50,4 +51,27 @@
 
 .main__tabs__tab.active:hover {
     cursor: default;
+}
+
+@media screen and (max-width: 1190px) {
+    .main{
+        padding: 60px 8px;
+    }
+}
+
+@media screen and (max-width: 640px){
+    .main__tabs__tab{
+        padding: 12px 8px;
+    }
+
+    .main__tabs{
+        column-gap: 0;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .main__tabs__tab:hover{
+        cursor: default;
+        background: none;
+    }
 }
