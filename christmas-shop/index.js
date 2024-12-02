@@ -18,8 +18,24 @@ document.addEventListener('DOMContentLoaded', event => {
 
     const burgerItem = document.getElementById('burgerMenu');
     const menu = document.getElementById('menu');
+    const menuItems = document.querySelectorAll('.header__list__item.active');
 
     let menuOpen = 0;
+
+    for (let menuItem of menuItems) {
+        menuItem.addEventListener('click', () => {
+            menu.classList.remove('show');
+            document.body.style.overflow = 'visible';
+            menu.classList.add('closing');
+            burgerItem.classList.remove('open');
+            setTimeout(() => {
+                menu.classList.remove('closing');
+                menu.style.visibility = 'hidden';
+            }, 500);
+            menuOpen = 0;
+        });
+    }
+
 
     burgerItem.addEventListener('click', () => {
         burgerItem.classList.toggle('open');
@@ -43,6 +59,30 @@ document.addEventListener('DOMContentLoaded', event => {
         }
     });
 })
+
+//timer
+
+const currentYear = new Date().getUTCFullYear();
+const newYear = Date.UTC(currentYear + 1, 0, 1, 0, 0, 0);
+
+const daysCount = document.getElementById('day-count');
+const hoursCount = document.getElementById('hours-count');
+const minutesCount = document.getElementById('minutes-count');
+const secondsCount = document.getElementById('seconds-count');
+
+function Timer() {
+    const todayDate = Date.now();
+    const gap = newYear - todayDate;
+    const days = Math.floor(gap / 1000 / 60 / 60 / 24);
+    const hours = Math.floor((gap / 1000 / 60 / 60) % 24);
+    const minutes = Math.floor((gap / 1000 / 60) % 60);
+    const seconds = Math.floor((gap / 1000) % 60);
+
+    daysCount.innerText = days;
+    hoursCount.innerText = hours;
+    minutesCount.innerText = minutes;
+    secondsCount.innerText = seconds;
+} setInterval(Timer, 1000);
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log(`Done (100/100):
