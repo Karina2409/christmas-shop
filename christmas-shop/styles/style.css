@@ -307,6 +307,7 @@
     background: var(--content-background);
     border-radius: 20px;
     text-decoration: none;
+    height: 204px;
 }
 
 .footer__card:hover{

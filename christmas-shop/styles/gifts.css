@@ -36,6 +36,7 @@
 .main__tabs__tab{
     padding: 12px 20px;
     border-radius: 12px;
+    height: 40px;
     transition: color, background-color 0.3s ease;
 }
 

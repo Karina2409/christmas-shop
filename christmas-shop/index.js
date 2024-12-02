@@ -90,68 +90,76 @@ function Timer() {
 //slider
 
 const sliderContainer = document.getElementById('slider-container');
+const sliderContainerWidth = sliderContainer.offsetWidth;
 const arrowLeft = document.querySelector('.slider__arrow-left');
 const arrowRight = document.querySelector('.slider__arrow-right');
 
 let clickCount = 3;
 let sliderStep = 0;
 let marginLeft = 0;
+let sliderPosition = 0;
 
-function refreshSliderStep(){
+function updateSliderStep(){
     const pageWidth = document.documentElement.scrollWidth;
     if(pageWidth >= 769){
-        sliderStep = 3;
-    } else if(pageWidth < 769){
-        sliderStep = 6;
+        clickCount = 3;
+    } else {
+        clickCount = 6;
     }
 
-    if(pageWidth >= 1440){}
+    if(pageWidth >= 1190){
+        marginLeft = 82;
+    } else {
+        marginLeft = 8;
+    }
+
+    sliderPosition = 0;
+    let visibleArea = document.querySelector('.slider__container__img-slider-row').offsetWidth;
+    sliderStep = (sliderContainerWidth - visibleArea) / clickCount;
+
+    sliderContainer.style.left = -sliderPosition + 'px';
+    updateButtons();
 }
 
-arrowRight.addEventListener('click', () => {
-   sliderContainer.style.transform = 'translateX(10px)';
-});
+function initSlider(){
+    updateSliderStep();
+    window.addEventListener('resize', updateSliderStep);
+}
 
+function nextSliderStep(){
 
-document.addEventListener('DOMContentLoaded', () => {
-    console.log(`Done (100/100):
-1. Макет страниц выравнивает дизайн по ширине экрана 1440px: +16
-- <header> на каждой странице: +2
-- Hero раздел на Home странице: +2
-- About раздел на Home странице: +2
-- Slider раздел на Home странице: +2
-- Best Gifts раздел на Home странице: +2
-- CTA раздел на Home странице: +2
-- Gifts раздел на Gifts странице: +2
-- <footer> на каждой странице: +2
-2. Макет страниц выравнивает дизайн по ширине экрана 768px: +16
-- <header> на каждой странице: +2
-- Hero раздел на Home странице: +2
-- About раздел на Home странице: +2
-- Slider раздел на Home странице: +2
-- Best Gifts раздел на Home странице: +2
-- CTA раздел на Home странице: +2
-- Gifts раздел на Gifts странице: +2
-- <footer>на каждой странице: +2
-3. Макет страниц выравнивает дизайн по ширине экрана 380px: +16
-- <header> на каждой странице: +2
-- Hero раздел на Home странице: +2
-- About раздел на Home странице: +2
-- Slider раздел на Home странице: +2
-- Best Gifts раздел на Home странице: +2
-- CTA раздел на Home странице: +2
-- Gifts раздел на Gifts странице: +2
-- <footer> на каждой странице: +2
-4. Горизонтальная полоса прокрутки отсутствует на всех экранах шириной до 380 пикселей включительно. Все содержимое страницы остается в соответствии с дизайном: не обрезается, не удаляется и не сдвигается в сторону: +24
-- Home страница: нет горизонтальной полосы прокрутки между 1440 и 768 пикселями ширина: +6
-- Home страница: нет горизонтальной полосы прокрутки между 768 и 380 пикселями ширина: +6
-- Gifts страница: нет горизонтальной полосы прокрутки между 1440 и 768 пикселями ширина: +6
-- Gifts страница: нет горизонтальной полосы прокрутки между 768 и 380 пикселями ширина: +6
-5. При плавном изменении размера окна браузера с 1440 пикселей до 380 пикселей макет занимает всю ширину окна (включая указанные поля), элементы соответствующим образом изменяют свои размеры и положение без полного масштабирования, элементы не перекрываются, а изображения сохраняют правильные пропорции: +8
-- На Home странице: +4
-- На Gifts странице: +4
-6. При ширине экрана 768 пикселей меню и навигационные ссылки <header> скрыты на обеих страницах, а значок меню «бургер» отображается: +4
-(Примечание: активация значка меню «бургер» на данном этапе не оценивается.)
-7. Эффекты наведения активны на настольных устройствах (в соответствии с Desktop типом устройства в DevTools) и отключены для мобильных устройств (в соответствии с Mobile типом устройства в DevTools) на обеих страницах: +4
-Макет обеих страниц проверен и не содержит ошибок в соответствии с W3C Validator ( https://validator.w3.org/ ): +12`)
-})
+    if (sliderPosition >= (sliderStep * clickCount)) return;
+
+    sliderPosition += sliderStep;
+    sliderContainer.style.left = -sliderPosition + 'px';
+    updateButtons();
+}
+
+function prevSliderStep(){
+
+    if(sliderPosition <= 1) return;
+    sliderPosition -= sliderStep;
+    sliderContainer.style.left = -sliderPosition + 'px';
+    updateButtons();
+}
+
+function updateButtons(){
+    if(sliderPosition <= 1){
+        arrowLeft.classList.remove('active');
+    }
+    else{
+        arrowLeft.classList.add('active');
+    }
+
+    if(sliderPosition >= (sliderStep * clickCount)){
+        arrowRight.classList.remove('active');
+    }
+    else {
+        arrowRight.classList.add('active');
+    }
+}
+
+initSlider();
+
+arrowRight.addEventListener('click', nextSliderStep);
+arrowLeft.addEventListener('click', prevSliderStep);
