@@ -169,7 +169,8 @@ if(arrowRight){
 
 //BEST GIFTS
 
-const giftsList = document.querySelector('.home__gifts-list');
+const giftsListHome = document.querySelector('.home__gifts-list');
+const giftsListGifts = document.querySelector('.gifts__gifts-list');
 
 document.addEventListener("DOMContentLoaded", function () {
     fetch('./gifts.json')
@@ -181,8 +182,11 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(data => {
             gifts = data;
-            if(giftsList){
+            if(giftsListHome){
                 updateBestGifts();
+            }
+            if(giftsListGifts){
+                renderGiftsList();
             }
 
         })
@@ -207,11 +211,11 @@ function generateRandomFourCards() {
 
 function updateBestGifts() {
     const cards = generateRandomFourCards();
-    giftsList.innerHTML = '';
+    giftsListHome.innerHTML = '';
 
     cards.forEach(gift => {
         const card = createCard(gift);
-        giftsList.append(card);
+        giftsListHome.append(card);
     })
 }
 
@@ -238,7 +242,7 @@ function createCard(gift) {
 
     card.addEventListener('click', () => {
         openPopup(gift);
-    })
+    });
 
     return card;
 }
@@ -264,4 +268,24 @@ function updateButtonToTopVisible(){
         backToTopButton.classList.remove('visible');
         backToTopButton.classList.add('invisible');
     }
+}
+
+
+//GIFT CARDS ON THE GIFT PAGE
+
+function renderGiftsList(){
+    const randomGifts = [];
+    while (randomGifts.length < gifts.length) {
+        const randomIndex = Math.floor(Math.random() * gifts.length);
+        const gift = gifts[randomIndex];
+
+        if (!randomGifts.includes(gift)) {
+            randomGifts.push(gift);
+        }
+    }
+    giftsListGifts.innerHTML = '';
+    randomGifts.forEach((gift) => {
+        const card = createCard(gift);
+        giftsListGifts.append(card);
+    })
 }
