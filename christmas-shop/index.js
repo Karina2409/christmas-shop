@@ -86,7 +86,7 @@ setInterval(Timer, 1000);
 //slider
 
 const sliderContainer = document.getElementById('slider-container');
-const sliderContainerWidth = sliderContainer.offsetWidth;
+let sliderContainerWidth = 0;
 const arrowLeft = document.querySelector('.slider__arrow-left');
 const arrowRight = document.querySelector('.slider__arrow-right');
 
@@ -96,25 +96,31 @@ let marginLeft = 0;
 let sliderPosition = 0;
 
 function updateSliderStep() {
-    const pageWidth = document.documentElement.scrollWidth;
-    if (pageWidth >= 769) {
-        clickCount = 3;
-    } else {
-        clickCount = 6;
+    if(sliderContainer){
+        const pageWidth = document.documentElement.scrollWidth;
+        if (pageWidth >= 769) {
+            clickCount = 3;
+        } else {
+            clickCount = 6;
+        }
+
+        if (pageWidth >= 1190) {
+            marginLeft = 82;
+        } else {
+            marginLeft = 8;
+        }
+
+        sliderContainerWidth = sliderContainer.offsetWidth;
+        sliderPosition = 0;
+
+        let visibleArea = document.querySelector('.slider__container__img-slider-row').offsetWidth;
+        sliderStep = (sliderContainerWidth - visibleArea) / clickCount;
+
+        sliderContainer.style.left = -sliderPosition + 'px';
+
+        updateButtons();
     }
 
-    if (pageWidth >= 1190) {
-        marginLeft = 82;
-    } else {
-        marginLeft = 8;
-    }
-
-    sliderPosition = 0;
-    let visibleArea = document.querySelector('.slider__container__img-slider-row').offsetWidth;
-    sliderStep = (sliderContainerWidth - visibleArea) / clickCount;
-
-    sliderContainer.style.left = -sliderPosition + 'px';
-    updateButtons();
 }
 
 function initSlider() {
@@ -155,13 +161,15 @@ function updateButtons() {
 
 initSlider();
 
-arrowRight.addEventListener('click', nextSliderStep);
-arrowLeft.addEventListener('click', prevSliderStep);
+if(arrowRight){
+    arrowRight.addEventListener('click', nextSliderStep);
+    arrowLeft.addEventListener('click', prevSliderStep);
+}
 
 
 //BEST GIFTS
 
-const giftsList = document.querySelector('.gifts-list');
+const giftsList = document.querySelector('.home__gifts-list');
 
 document.addEventListener("DOMContentLoaded", function () {
     fetch('./gifts.json')
@@ -173,7 +181,10 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(data => {
             gifts = data;
-            updateBestGifts();
+            if(giftsList){
+                updateBestGifts();
+            }
+
         })
         .catch(error => {
             console.error('Ошибка загрузки файла:', error);
@@ -235,4 +246,22 @@ function createCard(gift) {
 
 //BACK TO TOP BUTTON
 
-function
+const backToTopButton = document.querySelector('.back-to-top-button');
+backToTopButton.addEventListener('click', () => {
+    window.scrollTo(0, 0);
+});
+
+window.addEventListener('resize', updateButtonToTopVisible);
+window.addEventListener('scroll', updateButtonToTopVisible);
+
+function updateButtonToTopVisible(){
+    const pageWidth = document.documentElement.scrollWidth;
+
+    if(pageWidth <= 768 && window.pageYOffset > 300) {
+        backToTopButton.classList.add('visible');
+        backToTopButton.classList.remove('invisible');
+    } else {
+        backToTopButton.classList.remove('visible');
+        backToTopButton.classList.add('invisible');
+    }
+}

@@ -68,6 +68,10 @@
     right: 8px;
 }
 
+.back-to-top-button:hover{
+    cursor: pointer;
+}
+
 .back-to-top-button.invisible{
     visibility: hidden;
 }
