@@ -1,6 +1,8 @@
 let gifts = [];
 let randomGifts = [];
 
+const modal = document.querySelector('.modal');
+
 document.querySelectorAll('.header__list__item').forEach(item => {
     item.addEventListener('click', function () {
         const link = this.querySelector('a');
@@ -188,7 +190,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 updateBestGifts();
             }
             if(giftsListGifts){
-                console.log(randomGifts)
                 updateGiftsList(randomGifts);
             }
 
@@ -276,11 +277,6 @@ function updateButtonToTopVisible(){
 
 //GIFT CARDS ON THE GIFT PAGE
 
-const forWorkTab = document.getElementById('tab-for-work');
-const forHarmonyTab = document.getElementById('tab-for-harmony');
-const forHealthTab = document.getElementById('tab-for-health');
-const tabAll = document.getElementById('tab-all');
-
 const tabs = document.querySelectorAll('.main__tabs__tab');
 
 function updateGiftsList(randomGifts){
@@ -336,4 +332,181 @@ function startWithBigLetter(str){
         .split(' ')
         .map(word => word[0].toUpperCase() + word.slice(1).toLowerCase())
         .join(' ');
+}
+
+
+//MODAL
+
+function openPopup(gift){
+    let div = document.createElement('div');
+    div.style.overflowY = 'scroll';
+    div.style.width = '50px';
+    div.style.height = '50px';
+    document.body.append(div);
+    let scrollWidth = div.offsetWidth - div.clientWidth;
+    div.remove();
+
+    let clientWidthBefore = document.body.clientWidth;
+
+    document.body.style.overflow = 'hidden';
+
+    modal.classList.add('visible');
+    modal.classList.remove('invisible');
+
+    modal.innerHTML = ``
+
+    let modalGift = document.createElement('div');
+
+    modalGift.classList.add('modal__gift');
+    modalGift.classList.add('gift-card');
+
+    modalGift.innerHTML = createModalCard(gift);
+
+
+    const closeModal = document.createElement('div');
+    closeModal.classList.add('modal__close-button');
+    closeModal.innerHTML = `
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 10L10 30" stroke="#181C29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M10 10L30 30" stroke="#181C29" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    `;
+
+    closeModal.addEventListener('click', () => {
+        closeModalWindow()
+    });
+
+    modalGift.appendChild(closeModal);
+
+    modal.append(modalGift);
+
+    modal.addEventListener('click', (e) => {
+        if(e.target === modal) {
+            closeModalWindow()
+        }
+
+    })
+
+    if (document.body.clientWidth > clientWidthBefore) {
+        document.body.style.paddingRight = `${scrollWidth}px`;
+    }
+
+    function closeModalWindow() {
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = `0px`;
+        modal.classList.remove('visible');
+        modal.classList.add('invisible');
+    }
+}
+
+
+function createModalCard(gift){
+
+    const giftCategory = gift.category;
+    let giftDushCategory = '';
+    if(giftCategory === 'For Harmony') {
+        giftDushCategory = 'gift-for-harmony';
+    } else if(giftCategory === 'For Work') {
+        giftDushCategory = 'gift-for-work';
+    } else if(giftCategory === 'For Health') {
+        giftDushCategory = 'gift-for-health';
+    }
+
+    const superpowers = Object.values(gift.superpowers);
+
+    for (let superpower of superpowers) {
+        generateSnowCount(superpower);
+    }
+
+    const modalCardHTML = `
+        <div class="modal-card__image"></div>
+        <div class="modal-gift__text__container">
+            <div class="modal-gift__heading__container">
+                <h4 class="heading4 ${giftDushCategory}">${giftCategory}</h4>
+                <h3 class="heading3 color-black">${gift.name}</h3>
+                <p class="paragraph color-black">${gift.description}</p>
+            </div>
+            <div class="superpowers">
+                <h4 class="heading4 color-black">Adds superpowers to:</h4>
+                <div class="superpowers__items">
+                    <div class="superpowers__item">
+                        <p class="paragraph name color-black">Live</p>
+                        <p class="paragraph power color-black">${gift.superpowers.live}</p>
+                        <div class="power-images__container">
+                            ${generateSnowCount(gift.superpowers.live)}
+                        </div>
+                    </div>
+                    <div class="superpowers__item">
+                        <p class="paragraph name color-black">Create</p>
+                        <p class="paragraph power color-black">${gift.superpowers.create}</p>
+                        <div class="power-images__container">
+                            ${generateSnowCount(gift.superpowers.create)}
+                        </div>
+                    </div>
+                    <div class="superpowers__item">
+                        <p class="paragraph name color-black">Create</p>
+                        <p class="paragraph power color-black">${gift.superpowers.love}</p>
+                        <div class="power-images__container">
+                            ${generateSnowCount(gift.superpowers.love)}
+                        </div>
+                    </div>
+                    <div class="superpowers__item">
+                        <p class="paragraph name color-black">Create</p>
+                        <p class="paragraph power color-black">${gift.superpowers.dream}</p>
+                        <div class="power-images__container">
+                            ${generateSnowCount(gift.superpowers.dream)}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `
+
+    return (modalCardHTML);
+}
+
+function generateSnowCount(superpower){
+    let snows = document.createElement('div');
+    snows.classList.add('power-images');
+    let snowCount = superpower.slice(1)/100;
+    const snowRedElement = document.createElement('div');
+    snowRedElement.innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_35071_40)">
+                <path d="M12.1959 9.88162L11.6482 9.56542L13.1158 9.17219L12.8732 8.26704L10.5005 8.90278L9.38146 8.25667C9.39689 8.17336 9.40538 8.08765 9.40538 7.99997C9.40538 7.91229 9.39692 7.82655 9.38146 7.74327L10.5005 7.09716L12.8732 7.7329L13.1158 6.82775L11.6482 6.43452L12.1959 6.11831L14.546 5.97725L14.8921 4.02063L13.0246 3.34203L11.7274 5.30677L11.1797 5.62297L11.5729 4.15545L10.6678 3.91293L10.032 6.28561L8.91226 6.93211C8.78247 6.82103 8.63242 6.73313 8.4683 6.67494V5.3828L10.2052 3.64586L9.5426 2.98325L8.46827 4.05755V3.42515L9.51792 1.32584L7.99976 0L6.48157 1.3259L7.53122 3.42521V4.05761L6.45689 2.98332L5.79429 3.64592L7.53119 5.38286V6.675C7.36708 6.73319 7.21702 6.82109 7.08724 6.93217L5.96746 6.28568L5.33171 3.91299L4.42656 4.15551L4.81979 5.62304L4.27213 5.30684L2.9749 3.34209L1.10742 4.02069L1.45349 5.97731L3.80362 6.11838L4.35128 6.43458L2.88375 6.82781L3.1263 7.73296L5.49898 7.09722L6.61807 7.74333C6.60264 7.82664 6.59414 7.91235 6.59414 8.00003C6.59414 8.08771 6.60261 8.17345 6.61807 8.25673L5.49898 8.90285L3.1263 8.2671L2.88375 9.17226L4.35128 9.56548L3.80362 9.88169L1.45349 10.0227L1.10742 11.9793L2.97493 12.6579L4.27216 10.6932L4.81985 10.377L4.42662 11.8445L5.33177 12.087L5.96752 9.71435L7.0873 9.06786C7.21708 9.17894 7.36714 9.26684 7.53125 9.32503V10.6172L5.79435 12.3541L6.45696 13.0167L7.53129 11.9424V12.5748L6.48163 14.6741L7.99983 16L9.51802 14.6741L8.46837 12.5748V11.9424L9.5427 13.0167L10.2053 12.3541L8.4684 10.6172V9.32503C8.63251 9.26684 8.78257 9.17894 8.91235 9.06786L10.0321 9.71435L10.6679 12.087L11.573 11.8445L11.1798 10.377L11.7275 10.6932L13.0247 12.6579L14.8922 11.9793L14.5462 10.0227L12.1959 9.88162Z"
+                      fill="#FF4646"/>
+            </g>
+            <defs>
+                <clipPath id="clip0_35071_40">
+                    <rect width="16" height="16" fill="white"/>
+                </clipPath>
+            </defs>
+        </svg>
+    `
+    const snowGrayElement = document.createElement("div");
+    snowGrayElement.innerHTML = `
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_35071_58)">
+            <path d="M12.1959 9.88162L11.6482 9.56542L13.1158 9.17219L12.8732 8.26704L10.5005 8.90278L9.38146 8.25667C9.39689 8.17336 9.40538 8.08765 9.40538 7.99997C9.40538 7.91229 9.39692 7.82655 9.38146 7.74327L10.5005 7.09716L12.8732 7.7329L13.1158 6.82775L11.6482 6.43452L12.1959 6.11831L14.546 5.97725L14.8921 4.02063L13.0246 3.34203L11.7274 5.30677L11.1797 5.62297L11.5729 4.15545L10.6678 3.91293L10.032 6.28561L8.91226 6.93211C8.78247 6.82103 8.63242 6.73313 8.4683 6.67494V5.3828L10.2052 3.64586L9.5426 2.98325L8.46827 4.05755V3.42515L9.51792 1.32584L7.99976 0L6.48157 1.3259L7.53122 3.42521V4.05761L6.45689 2.98332L5.79429 3.64592L7.53119 5.38286V6.675C7.36708 6.73319 7.21702 6.82109 7.08724 6.93217L5.96746 6.28568L5.33171 3.91299L4.42656 4.15551L4.81979 5.62304L4.27213 5.30684L2.9749 3.34209L1.10742 4.02069L1.45349 5.97731L3.80362 6.11838L4.35128 6.43458L2.88375 6.82781L3.1263 7.73296L5.49898 7.09722L6.61807 7.74333C6.60264 7.82664 6.59414 7.91235 6.59414 8.00003C6.59414 8.08771 6.60261 8.17345 6.61807 8.25673L5.49898 8.90285L3.1263 8.2671L2.88375 9.17226L4.35128 9.56548L3.80362 9.88169L1.45349 10.0227L1.10742 11.9793L2.97493 12.6579L4.27216 10.6932L4.81985 10.377L4.42662 11.8445L5.33177 12.087L5.96752 9.71435L7.0873 9.06786C7.21708 9.17894 7.36714 9.26684 7.53125 9.32503V10.6172L5.79435 12.3541L6.45696 13.0167L7.53129 11.9424V12.5748L6.48163 14.6741L7.99983 16L9.51802 14.6741L8.46837 12.5748V11.9424L9.5427 13.0167L10.2053 12.3541L8.4684 10.6172V9.32503C8.63251 9.26684 8.78257 9.17894 8.91235 9.06786L10.0321 9.71435L10.6679 12.087L11.573 11.8445L11.1798 10.377L11.7275 10.6932L13.0247 12.6579L14.8922 11.9793L14.5462 10.0227L12.1959 9.88162Z" fill="#FF4646" fill-opacity="0.1" />
+          </g>
+          <defs>
+            <clipPath id="clip0_35071_58">
+              <rect width="16" height="16" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
+    `;
+
+    for (let i = 0; i < snowCount; i++) {
+        snows.appendChild(snowRedElement.cloneNode(true));
+    }
+
+    // Добавляем серые снежинки для оставшегося количества
+    const remaining = Math.max(0, 5 - snowCount);
+    for (let i = 0; i < remaining; i++) {
+        snows.appendChild(snowGrayElement.cloneNode(true));
+    }
+
+    return snows.outerHTML;
 }
