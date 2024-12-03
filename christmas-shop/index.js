@@ -23,15 +23,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     for (let menuItem of menuItems) {
         menuItem.addEventListener('click', () => {
-            menu.classList.remove('show');
-            document.body.style.overflow = 'visible';
-            menu.classList.add('closing');
-            burgerItem.classList.remove('open');
-            setTimeout(() => {
-                menu.classList.remove('closing');
-                menu.style.visibility = 'hidden';
-            }, 500);
-            menuOpen = 0;
+            if(window.innerWidth <= 768){
+                menu.classList.remove('show');
+                document.body.style.overflow = 'visible';
+                menu.classList.add('closing');
+                burgerItem.classList.remove('open');
+                setTimeout(() => {
+                    menu.classList.remove('closing');
+                    menu.style.visibility = 'hidden';
+                }, 500);
+                menuOpen = 0;
+            }
+
         });
     }
 
