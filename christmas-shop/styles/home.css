@@ -165,6 +165,9 @@ section {
     display: flex;
     column-gap: 20px;
     align-items: center;
+    position: relative;
+    min-width: 1993px;
+    transition: 1s;
 }
 
 .slider__image-container {
@@ -200,22 +203,24 @@ section {
 .slider__controller.active {
     border: 1px solid var(--static-white);
     transition: color, background-color 0.3s ease;
+
+    .arrow path {
+        stroke: var(--static-white);
+    }
 }
 
 .arrow path {
     stroke: var(--static-white-40);
 }
 
-.arrow.active path {
-    stroke: var(--static-white);
-}
+
 
 .slider__controller.active:hover {
     background: var(--static-white);
     cursor: pointer;
     transition: color, background-color 0.3s ease;
 
-    .arrow.active path {
+    .arrow path {
         stroke: var(--primary);
     }
 }

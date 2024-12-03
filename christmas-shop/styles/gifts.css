@@ -36,6 +36,7 @@
 .main__tabs__tab{
     padding: 12px 20px;
     border-radius: 12px;
+    height: 40px;
     transition: color, background-color 0.3s ease;
 }
 
@@ -51,6 +52,32 @@
 
 .main__tabs__tab.active:hover {
     cursor: default;
+}
+
+.back-to-top-button{
+    border: 1px solid #ff4646;
+    border-radius: 100px;
+    width: 56px;
+    height: 56px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 8px;
+    right: 8px;
+}
+
+.back-to-top-button:hover{
+    cursor: pointer;
+}
+
+.back-to-top-button.invisible{
+    visibility: hidden;
+}
+
+.back-to-top-button.visible{
+    visibility: visible;
 }
 
 @media screen and (max-width: 1190px) {

@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/gifts.css">
     <link type="Image/x-icon" href="assets/icons/snowflake.png" rel="icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
@@ -22,7 +21,7 @@
             <span></span>
         </div>
 
-        <nav class="header__nav">
+        <nav class="header__nav" id="menu">
             <ul class="header__list">
                 <li class="header__list__item open_page">
                     <p class="header__link">gifts</p>
@@ -52,119 +51,35 @@
         </div>
 
         <div class="main__tabs">
-            <div class="main__tabs__tab active">
+            <div class="main__tabs__tab active" id="tab-all">
                 <p class="action-small">All</p>
             </div>
-            <div class="main__tabs__tab">
-                <p class="action-small">for work</p>
+            <div class="main__tabs__tab" id="tab-for-work">
+                <p class="action-small">For Work</p>
             </div>
-            <div class="main__tabs__tab">
-                <p class="action-small">for health</p>
+            <div class="main__tabs__tab" id="tab-for-health">
+                <p class="action-small">For Health</p>
             </div>
-            <div class="main__tabs__tab">
-                <p class="action-small">for harmony</p>
+            <div class="main__tabs__tab" id="tab-for-harmony">
+                <p class="action-small">For Harmony</p>
             </div>
         </div>
 
-        <div class="gifts-list">
-            <div class="gift-card">
-                <img src="assets/gift-for-work.png" alt="Gift For Work" class="gift-card__image">
-                <div class="gift-card__heading__container">
-                    <h4 class="heading4 gift-for-work">For work</h4>
-                    <h3 class="heading3 color-black">Console.log Guru</h3>
-                </div>
-            </div>
+        <div class="gifts-list gifts__gifts-list">
 
-            <div class="gift-card">
-                <img src="assets/gift-for-health.png" alt="Gift For Health" class="gift-card__image">
-                <div class="gift-card__heading__container">
-                    <h4 class="heading4 gift-for-health">For health</h4>
-                    <h3 class="heading3 color-black">Step Master</h3>
-                </div>
-            </div>
-
-            <div class="gift-card">
-                <img src="assets/gift-for-work.png" alt="Gift For Work" class="gift-card__image">
-                <div class="gift-card__heading__container">
-                    <h4 class="heading4 gift-for-work">For work</h4>
-                    <h3 class="heading3 color-black">Bug Magnet</h3>
-                </div>
-            </div>
-
-            <div class="gift-card">
-                <img src="assets/gift-for-work.png" alt="Gift For Work" class="gift-card__image">
-                <div class="gift-card__heading__container">
-                    <h4 class="heading4 gift-for-work">For work</h4>
-                    <h3 class="heading3 color-black">Shortcut Cheater</h3>
-                </div>
-            </div>
-
-            <div class="gift-card">
-                <img src="assets/gift-for-health.png" alt="Gift For Health" class="gift-card__image">
-                <div class="gift-card__heading__container">
-                    <h4 class="heading4 gift-for-health">For health</h4>
-                    <h3 class="heading3 color-black">Posture Levitation</h3>
-                </div>
-            </div>
-
-            <div class="gift-card">
-                <img src="assets/gift-for-harmony.png" alt="Gift For Harmony" class="gift-card__image">
-                <div class="gift-card__heading__container">
-                    <h4 class="heading4 gift-for-harmony">For harmony</h4>
-                    <h3 class="heading3 color-black">Bug Acceptance Guru</h3>
-                </div>
-            </div>
-
-            <div class="gift-card">
-                <img src="assets/gift-for-health.png" alt="Gift For Health" class="gift-card__image">
-                <div class="gift-card__heading__container">
-                    <h4 class="heading4 gift-for-health">For health</h4>
-                    <h3 class="heading3 color-black">Snack Resister</h3>
-                </div>
-            </div>
-
-            <div class="gift-card">
-                <img src="assets/gift-for-harmony.png" alt="Gift For Harmony" class="gift-card__image">
-                <div class="gift-card__heading__container">
-                    <h4 class="heading4 gift-for-harmony">For harmony</h4>
-                    <h3 class="heading3 color-black">Error Laugher</h3>
-                </div>
-            </div>
-
-            <div class="gift-card">
-                <img src="assets/gift-for-health.png" alt="Gift For Health" class="gift-card__image">
-                <div class="gift-card__heading__container">
-                    <h4 class="heading4 gift-for-health">For health</h4>
-                    <h3 class="heading3 color-black">Hydration Bot</h3>
-                </div>
-            </div>
-
-            <div class="gift-card">
-                <img src="assets/gift-for-work.png" alt="Gift For Work" class="gift-card__image">
-                <div class="gift-card__heading__container">
-                    <h4 class="heading4 gift-for-work">For work</h4>
-                    <h3 class="heading3 color-black">Merge Master</h3>
-                </div>
-            </div>
-
-            <div class="gift-card">
-                <img src="assets/gift-for-harmony.png" alt="Gift For Harmony" class="gift-card__image">
-                <div class="gift-card__heading__container">
-                    <h4 class="heading4 gift-for-harmony">For harmony</h4>
-                    <h3 class="heading3 color-black">Joy Charger</h3>
-                </div>
-            </div>
-
-            <div class="gift-card">
-                <img src="assets/gift-for-harmony.png" alt="Gift For Harmony" class="gift-card__image">
-                <div class="gift-card__heading__container">
-                    <h4 class="heading4 gift-for-harmony">For harmony</h4>
-                    <h3 class="heading3 color-black">Spontaneous Coding Philosopher</h3>
-                </div>
-            </div>
+        </div>
+        <div class="modal invisible">
         </div>
     </div>
 </main>
+
+<div class="back-to-top-button invisible">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 5V19" stroke="#FF4646" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M18 11L12 5" stroke="#FF4646" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M6 11L12 5" stroke="#FF4646" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+</div>
 
 <footer class="footer" id="contacts">
     <div class="footer__block-list">
