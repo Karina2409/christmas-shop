@@ -435,6 +435,7 @@
     height: fit-content;
     width: 400px;
     max-width: 400px;
+
 }
 
 .modal-gift__text__container{
@@ -483,11 +484,16 @@
 
 .modal-card__image{
     height: 230px;
-    background: url("../assets/gift-for-work.png") center, center;
-    background-size: cover, cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
-
+.modal-card__image img {
+    height: auto;
+    width: 100%;
+}
 
 @media screen and (max-width: 1190px) {
     .header{
