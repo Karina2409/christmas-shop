@@ -12,10 +12,11 @@ document.querySelectorAll('.header__list__item').forEach(item => {
     });
 });
 
+const menu = document.getElementById('menu');
+
 document.addEventListener('DOMContentLoaded', () => {
 
     const burgerItem = document.getElementById('burgerMenu');
-    const menu = document.getElementById('menu');
     const menuItems = document.querySelectorAll('.header__list__item.active');
 
     let menuOpen = 0;
@@ -55,6 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
             menuOpen = 1;
         }
     });
+})
+
+window.addEventListener('resize', () => {
+    if(window.innerWidth > 768) {
+        menu.style.visibility = 'visible';
+    }
 })
 
 //timer
