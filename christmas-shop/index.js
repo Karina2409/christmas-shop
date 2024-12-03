@@ -17,7 +17,7 @@ const menu = document.getElementById('menu');
 document.addEventListener('DOMContentLoaded', () => {
 
     const burgerItem = document.getElementById('burgerMenu');
-    const menuItems = document.querySelectorAll('.header__list__item.active');
+    const menuItems = document.querySelectorAll('.header__list__item');
 
     let menuOpen = 0;
 
@@ -362,6 +362,8 @@ function openPopup(gift){
 
     modal.classList.add('visible');
     modal.classList.remove('invisible');
+    backToTopButton.classList.remove('visible');
+    backToTopButton.classList.add('invisible');
 
     modal.innerHTML = ``
 
@@ -402,6 +404,8 @@ function openPopup(gift){
     }
 
     function closeModalWindow() {
+        backToTopButton.classList.add('visible');
+        backToTopButton.classList.remove('invisible');
         document.body.style.overflow = '';
         document.body.style.paddingRight = `0px`;
         modal.classList.remove('visible');
@@ -429,7 +433,9 @@ function createModalCard(gift){
     }
 
     const modalCardHTML = `
-        <div class="modal-card__image"></div>
+        <div class="modal-card__image">
+            <img alt="${giftCategory}" src="./assets/${giftDushCategory}.png">
+        </div>
         <div class="modal-gift__text__container">
             <div class="modal-gift__heading__container">
                 <h4 class="heading4 ${giftDushCategory}">${giftCategory}</h4>
