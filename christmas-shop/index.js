@@ -265,22 +265,25 @@ function createCard(gift) {
 //BACK TO TOP BUTTON
 
 const backToTopButton = document.querySelector('.back-to-top-button');
-backToTopButton.addEventListener('click', () => {
-    window.scrollTo(0, 0);
-});
+if(backToTopButton){
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo(0, 0);
+    });
+}
 
 window.addEventListener('resize', updateButtonToTopVisible);
 window.addEventListener('scroll', updateButtonToTopVisible);
 
 function updateButtonToTopVisible(){
     const pageWidth = document.documentElement.scrollWidth;
-
-    if(pageWidth <= 768 && window.pageYOffset > 300) {
-        backToTopButton.classList.add('visible');
-        backToTopButton.classList.remove('invisible');
-    } else {
-        backToTopButton.classList.remove('visible');
-        backToTopButton.classList.add('invisible');
+    if(backToTopButton){
+        if(pageWidth <= 768 && window.pageYOffset > 300) {
+            backToTopButton.classList.add('visible');
+            backToTopButton.classList.remove('invisible');
+        } else {
+            backToTopButton.classList.remove('visible');
+            backToTopButton.classList.add('invisible');
+        }
     }
 }
 
@@ -362,8 +365,10 @@ function openPopup(gift){
 
     modal.classList.add('visible');
     modal.classList.remove('invisible');
-    backToTopButton.classList.remove('visible');
-    backToTopButton.classList.add('invisible');
+    if(backToTopButton){
+        backToTopButton.classList.remove('visible');
+        backToTopButton.classList.add('invisible');
+    }
 
     modal.innerHTML = ``
 
@@ -404,8 +409,10 @@ function openPopup(gift){
     }
 
     function closeModalWindow() {
-        backToTopButton.classList.add('visible');
-        backToTopButton.classList.remove('invisible');
+        if(backToTopButton){
+            backToTopButton.classList.add('visible');
+            backToTopButton.classList.remove('invisible');
+        }
         document.body.style.overflow = '';
         document.body.style.paddingRight = `0px`;
         modal.classList.remove('visible');
@@ -518,7 +525,6 @@ function generateSnowCount(superpower){
         snows.appendChild(snowRedElement.cloneNode(true));
     }
 
-    // Добавляем серые снежинки для оставшегося количества
     const remaining = Math.max(0, 5 - snowCount);
     for (let i = 0; i < remaining; i++) {
         snows.appendChild(snowGrayElement.cloneNode(true));
