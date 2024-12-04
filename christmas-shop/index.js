@@ -317,7 +317,6 @@ tabs.forEach(tab => {
     tab.addEventListener('click', () => {
         tabs.forEach(el => el.classList.remove('active'));
         tab.classList.add('active');
-        console.log(tab.classList)
         const category = startWithBigLetter(tab.innerText);
         let giftsByCategory = []
         if(category !== 'All'){
