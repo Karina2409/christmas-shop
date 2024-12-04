@@ -102,4 +102,7 @@
         cursor: default;
         background: none;
     }
+    .main__tabs__tab.active{
+        background: var(--static-white-20);
+    }
 }
