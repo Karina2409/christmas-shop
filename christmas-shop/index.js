@@ -317,6 +317,7 @@ tabs.forEach(tab => {
     tab.addEventListener('click', () => {
         tabs.forEach(el => el.classList.remove('active'));
         tab.classList.add('active');
+        console.log(tab.classList)
         const category = startWithBigLetter(tab.innerText);
         let giftsByCategory = []
         if(category !== 'All'){
@@ -464,14 +465,14 @@ function createModalCard(gift){
                         </div>
                     </div>
                     <div class="superpowers__item">
-                        <p class="paragraph name color-black">Create</p>
+                        <p class="paragraph name color-black">Love</p>
                         <p class="paragraph power color-black">${gift.superpowers.love}</p>
                         <div class="power-images__container">
                             ${generateSnowCount(gift.superpowers.love)}
                         </div>
                     </div>
                     <div class="superpowers__item">
-                        <p class="paragraph name color-black">Create</p>
+                        <p class="paragraph name color-black">Dream</p>
                         <p class="paragraph power color-black">${gift.superpowers.dream}</p>
                         <div class="power-images__container">
                             ${generateSnowCount(gift.superpowers.dream)}
