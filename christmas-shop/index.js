@@ -409,10 +409,7 @@ function openPopup(gift){
     }
 
     function closeModalWindow() {
-        if(backToTopButton){
-            backToTopButton.classList.add('visible');
-            backToTopButton.classList.remove('invisible');
-        }
+        updateButtonToTopVisible();
         document.body.style.overflow = '';
         document.body.style.paddingRight = `0px`;
         modal.classList.remove('visible');
